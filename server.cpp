@@ -377,7 +377,6 @@ void FTPServer::initializeCommands() {
             return "550 Could not get file size.\r\n";
         }
     };
-// در تابع initializeCommands اضافه کنید:
 
 commands_["DELE"] = [this](const std::string& arg) -> std::string {
     std::string filepath = resolvePath(arg);
@@ -452,7 +451,6 @@ std::string FTPServer::resolvePath(const std::string& path) {
     
     std::filesystem::path full_path;
     if (path[0] == '/') {
-        // استفاده از std::filesystem::path برای ترکیب مسیرها
         full_path = std::filesystem::path(root_directory_) / path.substr(1);
     } else {
         full_path = std::filesystem::path(current_directory_) / path;
